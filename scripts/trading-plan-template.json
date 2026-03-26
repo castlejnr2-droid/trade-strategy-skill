@@ -1,0 +1,63 @@
+{
+  "planVersion": "1.0.0",
+  "createdAt": "2025-01-01T00:00:00Z",
+  "updatedAt": "2025-01-01T00:00:00Z",
+  "template": null,
+
+  "platforms": {
+    "monitor": ["pump.fun", "raydium-launchlab", "metaplex", "bags", "moonshot"],
+    "dex": "jupiter"
+  },
+
+  "entry": {
+    "marketCapMin": 10000,
+    "marketCapMax": 50000,
+    "buyAmountSOL": 0.1,
+    "maxConcurrentPositions": 5
+  },
+
+  "safety": {
+    "minLiquidityUSD": 5000,
+    "maxDevWalletPercent": 10,
+    "minHolderCount": 50,
+    "rugProtection": {
+      "enabled": true,
+      "requireMintRevoked": true,
+      "requireFreezeRevoked": true,
+      "maxSingleHolderPercent": 25
+    }
+  },
+
+  "takeProfit": {
+    "style": "ladder",
+    "ladder": [
+      { "sellPercent": 25, "atMultiplier": 2 },
+      { "sellPercent": 25, "atMultiplier": 5 },
+      { "sellPercent": 25, "atMultiplier": 10 },
+      { "sellPercent": 25, "atMultiplier": null, "label": "moon bag" }
+    ],
+    "stopLossPercent": -50
+  },
+
+  "execution": {
+    "mode": "alert-only",
+    "alertChannels": ["telegram"],
+    "reportFrequency": "daily"
+  },
+
+  "riskManagement": {
+    "walletAddress": null,
+    "maxBudgetSOL": 5,
+    "cooldown": {
+      "consecutiveLossesBeforePause": 3,
+      "pauseDurationMinutes": 60,
+      "extendedPauseAfter": 5,
+      "extendedPauseDurationMinutes": 240
+    }
+  },
+
+  "whaleTracking": {
+    "enabled": false,
+    "wallets": []
+  }
+}
