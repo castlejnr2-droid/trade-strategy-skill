@@ -50,8 +50,19 @@ Presale and fair launch platform on Solana. Supports two models:
 - **Fair Launch**: Everyone gets same price, allocation proportional to contribution
 
 - **Website**: bags.fm
-- Monitor via their Telegram/Twitter for new launches
-- No public REST API — track on-chain program events
+- **API Base**: `https://public-api-v2.bags.fm/api/v1`
+- **Auth**: Requires API key via `x-api-key` header. Get keys at [dev.bags.fm](https://dev.bags.fm) (up to 10 keys per user)
+- **Rate limit**: 1,000 requests/hour per user/IP
+- **Key endpoints**:
+  - `GET /pools` — list all Bags pools with Meteora DBC and DAMM v2 pool keys
+  - `GET /pools/{tokenMint}` — get specific pool by token mint
+  - `POST /trade/quote` — get trade quote for a token
+  - `POST /trade/swap` — create swap transaction (returns base58 serialized tx, ready to sign & send)
+  - `GET /claimable-positions/{wallet}` — get claimable fee positions for a wallet
+  - `POST /token/info` — create token info with image upload
+  - `POST /token/launch` — create token launch transaction
+- **Agent Auth**: Bags supports AI agent authentication via Moltbook verification flow (init → post verification → login → get JWT valid 365 days)
+- **Docs**: https://docs.bags.fm
 
 ### Moonshot
 DEX Screener's token launcher. Tokens created here appear natively on DEX Screener with boosted visibility.
