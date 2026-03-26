@@ -278,6 +278,42 @@ After 3 consecutive losses, enforce a cooldown:
 ### Plan Updates
 User can say "update my strategy" or "change my plan" at any time to re-enter any stage. Save previous plan as backup before overwriting.
 
+### Credentials Storage
+Store all API keys and credentials at `trading-credentials.json` in the workspace:
+```json
+{
+  "helius_api_key": "",
+  "birdeye_api_key": "",
+  "bags_api_key": "",
+  "bags_jwt_token": "",
+  "trading_wallet_private_key": "",
+  "alert_config": {
+    "telegram_bot_token": "",
+    "telegram_chat_id": "",
+    "discord_webhook_url": ""
+  }
+}
+```
+⚠️ Never log or share private keys. Load only when signing transactions.
+
+## Example Prompts
+
+Your human can trigger the skill with any of these:
+- "I want to trade memecoins"
+- "Set up my trading strategy"
+- "Help me snipe new launches on Pump.fun"
+- "I have 5 SOL, help me flip memecoins"
+- "Show me my trading performance"
+- "Update my strategy"
+- "Pause trading" / "Resume trading"
+- "Switch to alert-only mode"
+- "What's my win rate?"
+- "Change my take profit to ladder style"
+- "Add Bags to my monitored platforms"
+- "Show me my open positions"
+
+You don't need to wait for a specific command — if the human asks anything trading-related, this skill activates.
+
 ## Channel Setup Guides
 
 ### Telegram Setup
