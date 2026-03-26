@@ -39,8 +39,8 @@ The AI asks you which Solana token launch platforms to monitor. All multiple cho
 
 - Pump.fun (the memecoin factory)
 - Raydium LaunchLab (Raydium's native launcher)
-- Metaplex (the OG Solana token infrastructure)
-- Bags (presale & fair launch platform)
+- Metaplex (integrated with their Genesis Launch Pools — fair launch with deposit phases, on-chain cranking, and proportional token claims via their official SDK)
+- Bags (integrated with their official API — agent authentication, trade quotes, swaps, pool monitoring, and fee claiming built in)
 - Moonshot (DEX Screener's launcher)
 - All of the above
 
@@ -107,6 +107,22 @@ Then the AI generates your complete **Trading Plan Summary** — a clean documen
 You review it. Adjust if needed. Once you confirm — the AI activates the plan and starts working.
 
 Your trading plan becomes the AI's **constitution**. It will not deviate from it. Every buy, every sell, every skip follows YOUR rules.
+
+---
+
+## Deep Platform Integrations 🔗
+
+Trade Strategy Skill isn't just a generic trading bot. It integrates directly with each platform's official tools:
+
+**Metaplex** — Built using Metaplex's official Genesis SDK (`@metaplex-foundation/genesis`). The skill understands Metaplex's unique fair launch model: timed deposit windows, on-chain cranking, and proportional token claiming. It can track which phase a Genesis Launch Pool is in, calculate your implied entry price based on total deposits, and verify token metadata directly through the Token Metadata Program.
+
+**Bags** — Integrated with Bags' official REST API (`public-api-v2.bags.fm`). The skill supports Bags' native agent authentication flow, giving your AI its own identity on the platform. It can fetch trade quotes, execute swaps, monitor pools with Meteora DBC and DAMM v2 data, and even track and claim your earned trading fees — all through official endpoints.
+
+**Pump.fun, Raydium, Moonshot** — Connected via their public APIs and WebSocket feeds for real-time monitoring of new launches, bonding curve progress, and graduation events.
+
+**Jupiter** — All swaps route through Jupiter's aggregator API for the best prices across every Solana DEX. No API key required.
+
+This isn't surface-level integration. The skill speaks each platform's native language.
 
 ---
 
