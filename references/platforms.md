@@ -26,12 +26,23 @@ Raydium's native token launcher. Similar concept to Pump.fun but integrated into
   - WebSocket available for real-time pool creation events
 
 ### Metaplex
-Core Solana token infrastructure. Handles token creation, metadata, and NFT standards. Not a launchpad per se — it's the underlying standard most tokens use.
+Full Solana token infrastructure + **Genesis Launch Pools** (fair launch system).
 
 - **Token Metadata Program**: `metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s`
 - Use to verify: token name, symbol, URI, update authority, whether metadata is mutable
-- **JS SDK**: `@metaplex-foundation/js`
+- **Genesis Launch Pools**: Fair launch where users deposit SOL during a timed window and receive tokens proportional to their share of total deposits. No fixed price — market determines distribution.
+- **Launch Phases**:
+  1. **Deposit Phase** — users deposit SOL into the Launch Pool bucket
+  2. **Crank Phase** — deposit period ends, on-chain behaviors triggered (SOL moves to unlocked bucket)
+  3. **Claim Phase** — users claim their proportional token allocation
+- **Key difference from Pump.fun**: No bonding curve. Fair distribution based on deposit share, not first-come-first-served pricing.
+- **SDKs**: `@metaplex-foundation/genesis` (launch pools), `@metaplex-foundation/umi` (core framework), `@metaplex-foundation/mpl-toolbox`
+- **Monitoring signals**:
+  - Track deposit phase timing — participate during deposit window
+  - Check total SOL deposited vs token allocation to estimate entry price
+  - Monitor number of depositors (more depositors = healthier distribution)
 - **API**: Query via Helius DAS (Digital Asset Standard) API
+- **Docs**: https://www.metaplex.com/docs
 
 ### Bags (@BagsApp)
 Presale and fair launch platform on Solana. Supports two models:

@@ -93,3 +93,20 @@ Combine checks into a single pass/fail before each trade:
 | Not on scammer watchlist | Required | Not found | Found |
 
 **Required** checks must pass — no override. **High/Medium** checks follow plan settings (user may have set permissive thresholds).
+
+## Metaplex-Specific Checks
+
+For tokens launched via Metaplex Genesis Launch Pools, additional verification:
+
+### Token Metadata Verification
+- Query the Token Metadata Program (`metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s`)
+- Check `isMutable` — if `true`, creator can change token name/symbol/URI post-launch (moderate risk)
+- Check `updateAuthority` — who can modify metadata. If set to creator wallet, they retain control.
+- Verify `uri` points to valid metadata JSON (not empty or placeholder)
+
+### Genesis Launch Pool Checks
+- **Deposit phase status**: Only participate during active deposit window. If deposits are closed, buy on secondary market instead.
+- **Total depositors**: More depositors = more distributed supply = healthier token. Flag if <20 depositors.
+- **SOL deposited vs allocation**: Calculate implied price. If total SOL deposited is very low, token may lack real demand.
+- **Unlocked bucket recipient**: Check who receives the collected SOL. If it goes to a single wallet with no vesting, creator can dump SOL immediately.
+- **Claim phase**: Verify claim window is reasonable (not too short). Very short claim windows can trap users who miss the window.
