@@ -9,12 +9,16 @@ Guide the user through a 5-stage multiple-choice conversation to build a clear, 
 
 ## Core Rules
 
+- **ONE STAGE AT A TIME.** Present only the current stage's questions. Wait for the user's response before moving to the next stage. Never show all stages at once.
+- **ONE QUESTION AT A TIME within each stage.** Ask the first question, wait for the answer, then ask the next. Do not dump all questions in a single message.
 - Every question is multiple choice with plain language options.
 - Every question includes: **"Let AI decide for me"** as the last option.
 - Explain each option briefly before the user chooses.
 - If user says "Let AI decide" — pick the most balanced/safe option and explain why.
+- After each answer, acknowledge the choice briefly, then present the next question.
 - Never skip stages. Never start trading without a confirmed plan.
 - If user wants to skip ahead, offer **Strategy Templates** (see below).
+- **Flow**: Stage 1 → wait → Stage 2 → wait → Stage 3 → wait → Stage 4 → wait → Stage 5 → summary → confirm.
 
 ## Stage 1: Platform Selection 🏗️
 
